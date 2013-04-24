@@ -30,14 +30,16 @@ class ZmqSubConnection(ZmqConnection):
     """
     socketType = constants.SUB
 
-    def subscribe(self, tag):
+    def subscribe(self, tag=""):
         """
         Subscribe to messages with specified tag (prefix).
 
         @param tag: message tag
-        @type tag: C{str}
+        @type tag: C{basestring, iterable}
         """
-        self.socket_set(constants.SUBSCRIBE, tag)
+        tags = [tag] if isinstance(tag, basestring) else tag
+        for tag in tag:
+            self.socket_set(constants.SUBSCRIBE, tag)
 
     def unsubscribe(self, tag):
         """
