@@ -135,5 +135,27 @@ class ZmqConnectionTestCase(unittest.TestCase):
         return _wait(0.1).addCallback(publish) \
             .addCallback(lambda _: _wait(0.1)).addCallback(check)
 
+    def test_send_recv_multiple_subscriptions(self):
+        r = ZmqTestSubConnection(
+            self.factory, ZmqEndpoint(ZmqEndpointType.bind, "ipc://test-sock"))
+        s = ZmqPubConnection(
+            self.factory, ZmqEndpoint(ZmqEndpointType.connect,
+                                      "ipc://test-sock"))
+
+        r.subscribe(['tag1', 'different-tag'])
+
+        def publish(ignore):
+            s.publish('xyz', 'different-tag')
+            s.publish('abcd', 'tag1')
+            s.publish('efgh', 'tag2')
+
+        def check(ignore):
+            result = getattr(r, 'messages', [])
+            expected = [['tag1', 'abcd'], ['different-tag', 'xyz']]
+            self.assertItemsEqual(result, expected)
+
+        return _wait(0.01).addCallback(publish) \
+            .addCallback(lambda _: _wait(0.01)).addCallback(check)
+
     if not _detect_epgm():
         test_send_recv_pgm.skip = "epgm:// not available"
