@@ -1,14 +1,17 @@
+.. txZMQ documentation master file, created by
+   sphinx-quickstart on Mon Oct 29 00:35:01 2012.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
 Twisted bindings for 0MQ
 ========================
 
-.. contents::
-
-Introduction
-------------
 
 txZMQ allows to integrate easily `ØMQ <http://zeromq.org>`_ sockets into
 Twisted event loop (reactor).
 
+Introduction
+------------
 txZMQ supports both CPython and PyPy, and ØMQ library version 2.2.x or 3.2.x.
 
 
