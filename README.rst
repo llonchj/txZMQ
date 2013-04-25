@@ -8,25 +8,24 @@ Twisted bindings for 0MQ
 
 
 txZMQ allows to integrate easily `ØMQ <http://zeromq.org>`_ sockets into
-Twisted event loop (reactor).
+`Twisted <http://twistedmatrix.com>`_ event loop (reactor).
 
 Introduction
 ------------
-txZMQ supports both CPython and PyPy, and ØMQ library version 2.2.x or 3.2.x.
-
+txZMQ supports both CPython and `PyPy <http://www.pypy.org>`_, and ØMQ library version 2.2.x or 3.2.x.
 
 Requirements
 ------------
 
-Non-Python library required:
+System library required:
 
-* ØMQ library 2.2.x or 3.2.x
+* `ØMQ <http://zeromq.org>`_ library 2.2.x or 3.2.x
 
 Python packages required:
 
-* pyzmq (for CPython)
-* pyzmq-ctypes (for PyPy)
-* Twisted
+* `pyzmq (for CPython)<https://pypi.python.org/pypi/pyzmq>`_
+* `pyzmq-ctypes (for PyPy)<https://pypi.python.org/pypi/pyzmq-ctypes>`_
+* `Twisted <http://twistedmatrix.com>`_
 
 
 Details
